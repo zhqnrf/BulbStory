@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name" translatable="false">Bulb Story</string>
+    <string name="login">Login</string>
+    <string name="message_welcome_page">Get to know Bangkit, see the success stories of people who have joined Bangkit, and write your success story on Bangkit now!</string>
+    <string name="title_welcome_page">Welcome to Bangkit Story by Rio</string>
+    <string name="title_signup_page">Complete your data below</string>
+    <string name="message_login_page">Sign in Now!</string>
+    <string name="title_login_page">Want to know other people\'s success stories and create your own story?</string>
+    <string name="logout">Logout</string>
+    <string name="start_now">Start Now!</string>
+    <string name="label_is_havent_account">Don\'t have account ?</string>
+    <string name="label_is_have_account">Already have account ?</string>
+    <string name="action_to_register">Register here</string>
+    <string name="action_to_login">Login here</string>
+    <string name="hint_email">Email</string>
+    <string name="error_email">Email invalid</string>
+    <string name="hint_password">Password</string>
+    <string name="error_password">Password must be more than 8 characters</string>
+    <string name="hint_username">Username</string>
+    <string name="error_username">Username can\'t be less than 3 characters</string>
+    <string name="warning_input">Please Complete your data first</string>
+    <string name="check">Check your Email or Password</string>
+    <string name="register">Register</string>
+    <string name="success_register">Successfully Register Your Account</string>
+    <string name="error_register">Sorry, Failed Register Your Account!</string>
+    <string name="description">Description of Story</string>
+    <string name="photo">Photo</string>
+    <string name="data_not_found">Oops, Data not Found…</string>
+    <string name="check_connection">Oops, Check your Connection..</string>
+    <string name="try_again">Try Again</string>
+    <string name="log_out">Log out</string>
+    <string name="are_you_sure">Are you sure ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="not_out">Not out</string>
+    <string name="log_out_warning">You log out from apps</string>
+    <string name="upload_story">Upload Story</string>
+    <string name="details">Details</string>
+    <string name="bangkit_story_logo">Bangkit Story Logo</string>
+    <string name="account">Account User</string>
+    <string name="change_language">Change Language</string>
+    <string name="content_description_btn_translate">Button Translate</string>
+    <string name="content_description_img_profile">Image Profile</string>
+    <string name="const_text_setting">Setting</string>
+    <string name="title_account">Account</string>
+    <string name="image_add_photo">Add Images</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="hint_description">What do you want to tell with others..</string>
+    <string name="upload">Upload</string>
+    <string name="not_allowed_permission">Not allowed permission</string>
+    <string name="warning_upload">Please complete uploaded file include your desricption too..</string>
+    <string name="success_add_story">Congrats, Successfully Uploaded Your Story!</string>
+    <string name="error_add_story">Sorry, failed uploaded your story. Please try again!</string>
+    <string name="signup">Register</string>
+    <string name="add_widget" translatable="false">Add widget</string>
+    <string name="appwidget_text" translatable="false">Bangkit Story Widget</string>
+    <string name="empty_text" translatable="false">No Data</string>
+    <string name="app_widget_description" translatable="false">Bangkit Story Widget Description</string>
+</resources>
