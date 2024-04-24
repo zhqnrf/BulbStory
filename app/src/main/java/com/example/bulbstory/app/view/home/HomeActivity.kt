@@ -1,4 +1,4 @@
-package com.example.bulbstory.app.view.main
+package com.example.bulbstory.app.view.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.example.bulbstory.app.adapter.StoryAdapter
 import com.example.bulbstory.app.data.DataRepository
 import com.example.bulbstory.app.data.remote.api.ApiClient
 import com.example.bulbstory.app.data.remote.respon.story.ListStory
-import com.example.bulbstory.app.databinding.ActivityMainBinding
+import com.example.bulbstory.app.databinding.ActivityHomeBinding
 import com.example.bulbstory.app.util.NetworkResult
 import com.example.bulbstory.app.util.PrefsManager
 import com.example.bulbstory.app.util.ViewModelFactory
@@ -20,13 +20,13 @@ import com.example.bulbstory.app.view.add.AddStoryActivity
 import com.example.bulbstory.app.view.setting.SettingActivity
 import com.example.bulbstory.app.view.detail.DetailActivity
 
-class MainActivity : AppCompatActivity(), StoryAdapter.OnItemClickAdapter {
+class HomeActivity : AppCompatActivity(), StoryAdapter.OnItemClickAdapter {
 
-    private val binding: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
+    private val binding: ActivityHomeBinding by lazy {
+        ActivityHomeBinding.inflate(layoutInflater)
     }
     private lateinit var prefsManager: PrefsManager
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: HomeViewModel
     private lateinit var storyAdapter: StoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), StoryAdapter.OnItemClickAdapter {
         prefsManager = PrefsManager(this)
         storyAdapter = StoryAdapter(this, this)
         val dataRepository = DataRepository(ApiClient.getInstance())
-        viewModel = ViewModelProvider(this, ViewModelFactory(dataRepository))[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelFactory(dataRepository))[HomeViewModel::class.java]
         fetchData(prefsManager.token)
 
         binding.swipeRefresh.setOnRefreshListener {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), StoryAdapter.OnItemClickAdapter {
             startActivity(Intent(this, AddStoryActivity::class.java))
         }
 
-        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.account_menu -> {
                     val intent = Intent(this, SettingActivity::class.java)
@@ -67,13 +67,13 @@ class MainActivity : AppCompatActivity(), StoryAdapter.OnItemClickAdapter {
     private fun fetchData(auth: String) {
         binding.rvStory.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@HomeActivity)
             adapter = storyAdapter
         }
         viewModel.apply {
             setLoadingState(true)
             fetchListStory(auth)
-            responseListStory.observe(this@MainActivity) {
+            responseListStory.observe(this@HomeActivity) {
                 when(it) {
                     is NetworkResult.Success -> {
                         if(it.data?.listStory != null) {

@@ -10,7 +10,7 @@ import android.view.WindowManager
 import androidx.lifecycle.lifecycleScope
 import com.example.bulbstory.app.R
 import com.example.bulbstory.app.util.PrefsManager
-import com.example.bulbstory.app.view.main.MainActivity
+import com.example.bulbstory.app.view.home.HomeActivity
 import com.example.bulbstory.app.view.start.WelcomeActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -19,13 +19,13 @@ import kotlinx.coroutines.launch
 class SplashscreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splashscreen)
+        setContentView(R.layout.activity_splash_screen)
         setView()
         val prefsManager = PrefsManager(this)
         lifecycleScope.launch {
             delay(3000)
             val intent = if(prefsManager.exampleBoolean) {
-                Intent(this@SplashscreenActivity, MainActivity::class.java)
+                Intent(this@SplashscreenActivity, HomeActivity::class.java)
             } else {
                 Intent(this@SplashscreenActivity, WelcomeActivity::class.java)
             }

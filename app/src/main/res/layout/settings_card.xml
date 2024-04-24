@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!-- CardView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Isi CardView -->
+            <!-- Mulai -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:gravity="start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rounded_background"
+                    android:src="@drawable/user"
+                    android:id="@+id/userImage"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/greeting"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/black" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/nameUser"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:id="@+id/userName"
+                            android:layout_marginStart="5dp"/>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/emailUser"
+                        android:textColor="@color/navy"
+                        android:textSize="16sp"
+                        android:id="@+id/email_card"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/blue" />
+
+            <Button
+                android:id="@+id/button_changeLang"
+                android:layout_width="290dp"
+                android:layout_height="43dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_settings"
+                android:text="@string/changeLang"
+                android:layout_marginBottom="30dp"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:cornerRadius="15dp" />
+
+
+
+            <!-- Akhir -->
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Garis -->
+    <!-- Warna garis disesuaikan dengan kebutuhan Anda -->
+
+</LinearLayout>

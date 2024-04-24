@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.splash.SplashscreenActivity">
+    android:background="@color/white"
+    tools:context=".view.splash.SplashscreenActivity"
+    tools:ignore="MissingDefaultResource">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="198dp"
-        android:layout_height="107dp"
+        android:layout_width="461dp"
+        android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_bangkit_story"
-        android:contentDescription="@string/bangkit_story_logo" />
+        app:srcCompat="@drawable/icon"
+        android:contentDescription="@string/todo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

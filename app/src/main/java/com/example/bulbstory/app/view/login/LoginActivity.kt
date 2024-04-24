@@ -17,7 +17,7 @@ import com.example.bulbstory.app.util.Message
 import com.example.bulbstory.app.util.NetworkResult
 import com.example.bulbstory.app.util.PrefsManager
 import com.example.bulbstory.app.util.ViewModelFactory
-import com.example.bulbstory.app.view.main.MainActivity
+import com.example.bulbstory.app.view.home.HomeActivity
 import com.example.bulbstory.app.view.signup.RegisterActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
 
         setLogin()
 
-        binding.tvToRegister.setOnClickListener {
+        binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.emailEditText.text.toString().trim()
             val password = binding.passwordEditText.text.toString().trim()
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Message.setMessage(this, getString(R.string.warning_input))
+                Message.setMessage(this, getString(R.string.errorEmail))
             } else {
                 showLoading(true)
                 lifecycle.coroutineScope.launchWhenResumed {
@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                                     startActivity(
                                         Intent(
                                             this@LoginActivity,
-                                            MainActivity::class.java
+                                            HomeActivity::class.java
                                         )
                                     )
                                     finish()
@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
                                 }
 
                                 is NetworkResult.Error -> {
-                                    Message.setMessage(this@LoginActivity, resources.getString(R.string.check))
+                                    Message.setMessage(this@LoginActivity, resources.getString(R.string.failedLogin))
                                     showLoading(false)
                                 }
                             }
@@ -110,8 +110,8 @@ class LoginActivity : AppCompatActivity() {
         val passwordEditTextLayout =
             ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val login = ObjectAnimator.ofFloat(binding.loginButton, View.ALPHA, 1f).setDuration(100)
-        val haveNotAcc = ObjectAnimator.ofFloat(binding.tvIsHaventAccount, View.ALPHA, 1f).setDuration(100)
-        val registerButton = ObjectAnimator.ofFloat(binding.tvToRegister, View.ALPHA, 1f).setDuration(100)
+        val haveNotAcc = ObjectAnimator.ofFloat(binding.textSiginup, View.ALPHA, 1f).setDuration(100)
+        val registerButton = ObjectAnimator.ofFloat(binding.btnRegister, View.ALPHA, 1f).setDuration(100)
 
         val together = AnimatorSet().apply {
             playTogether(haveNotAcc, registerButton)

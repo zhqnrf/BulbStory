@@ -16,7 +16,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.title = getString(R.string.details)
+        supportActionBar?.title = getString(R.string.titleDetail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fetchData()
     }

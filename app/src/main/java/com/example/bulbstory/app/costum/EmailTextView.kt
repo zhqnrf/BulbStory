@@ -33,11 +33,11 @@ class EmailTextView : AppCompatEditText {
     }
 
     private fun init() {
-        emailIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_email_24) as Drawable
+        emailIconDrawable = ContextCompat.getDrawable(context, R.drawable.icon_email_two) as Drawable
         inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
         compoundDrawablePadding = 16
 
-        setHint(R.string.hint_email)
+        setHint(R.string.hintEmail)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             setAutofillHints(AUTOFILL_HINT_EMAIL_ADDRESS)
         }
@@ -50,7 +50,7 @@ class EmailTextView : AppCompatEditText {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Email validation
                 if (!s.isNullOrEmpty() && !Patterns.EMAIL_ADDRESS.matcher(s).matches())
-                    error = context.getString(R.string.error_email)
+                    error = context.getString(R.string.errorEmail)
             }
         })
     }

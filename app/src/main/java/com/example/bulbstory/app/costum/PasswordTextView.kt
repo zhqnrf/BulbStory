@@ -39,11 +39,11 @@ class PasswordTextView : AppCompatEditText {
 
     private fun init() {
         passwordIconDrawable =
-            ContextCompat.getDrawable(context, R.drawable.ic_baseline_lock_24) as Drawable
+            ContextCompat.getDrawable(context, R.drawable.icon_lock) as Drawable
         inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
         compoundDrawablePadding = 16
 
-        setHint(R.string.hint_password)
+        setHint(R.string.hintPassword)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             setAutofillHints(AUTOFILL_HINT_PASSWORD)
         }
@@ -56,7 +56,7 @@ class PasswordTextView : AppCompatEditText {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Password validation
                 if (!s.isNullOrEmpty() && s.length < 8)
-                    error = context.getString(R.string.error_password)
+                    error = context.getString(R.string.errorPassword)
             }
         })
     }

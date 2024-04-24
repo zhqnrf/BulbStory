@@ -32,11 +32,11 @@ class UserTextView : AppCompatEditText {
 
     private fun init() {
         passwordIconDrawable =
-            ContextCompat.getDrawable(context, R.drawable.ic_baseline_person_24) as Drawable
+            ContextCompat.getDrawable(context, R.drawable.icon_person) as Drawable
         inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
         compoundDrawablePadding = 16
 
-        setHint(R.string.hint_username)
+        setHint(R.string.hintUser)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             setAutofillHints(AUTOFILL_HINT_NAME)
         }
@@ -50,7 +50,7 @@ class UserTextView : AppCompatEditText {
                 // Password validation
                 // Display error automatically if the password doesn't meet certain criteria
                 if (!s.isNullOrEmpty() && s.length < 3)
-                    error = context.getString(R.string.error_username)
+                    error = context.getString(R.string.errorUser)
             }
         })
     }

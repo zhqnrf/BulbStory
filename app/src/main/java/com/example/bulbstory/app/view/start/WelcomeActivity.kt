@@ -9,15 +9,15 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bulbstory.app.databinding.ActivityWelcomeBinding
+import com.example.bulbstory.app.databinding.ActivityIntroBinding
 import com.example.bulbstory.app.view.login.LoginActivity
 
 class WelcomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityWelcomeBinding
+    private lateinit var binding: ActivityIntroBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityWelcomeBinding.inflate(layoutInflater)
+        binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupView()
@@ -39,21 +39,21 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.loginButton.setOnClickListener {
+        binding.buttonStart.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
     private fun playAnimation() {
-        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
+        ObjectAnimator.ofFloat(binding.ivWelcome, View.TRANSLATION_X, -30f, 30f).apply {
             duration = 6000
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()
 
-        val login = ObjectAnimator.ofFloat(binding.loginButton, View.ALPHA, 1f).setDuration(100)
-        val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
-        val desc = ObjectAnimator.ofFloat(binding.descTextView, View.ALPHA, 1f).setDuration(100)
+        val login = ObjectAnimator.ofFloat(binding.buttonStart, View.ALPHA, 1f).setDuration(100)
+        val title = ObjectAnimator.ofFloat(binding.textTitle, View.ALPHA, 1f).setDuration(100)
+        val desc = ObjectAnimator.ofFloat(binding.textDescription, View.ALPHA, 1f).setDuration(100)
 
         AnimatorSet().apply {
             playSequentially(title, desc, login)

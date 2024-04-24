@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        supportActionBar?.title = resources.getString(R.string.register)
+        supportActionBar?.title = resources.getString(R.string.registerTitle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val dataRepository = DataRepository(ApiClient.getInstance())
         viewModel = ViewModelProvider(this, ViewModelFactory(dataRepository))[LoginAndRegisterViewModel::class.java]
@@ -54,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
                 val email = binding.emailEditText.text.toString().trim()
                 val password = binding.passwordEditText.text.toString().trim()
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(name)) {
-                    Message.setMessage(this@RegisterActivity, getString(R.string.warning_input))
+                    Message.setMessage(this@RegisterActivity, getString(R.string.warningRegister))
                 } else {
                     showLoading(true)
                     lifecycle.coroutineScope.launchWhenResumed {
@@ -65,14 +65,14 @@ class RegisterActivity : AppCompatActivity() {
                                     is NetworkResult.Success -> {
                                         showLoading(false)
                                         startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                                        Message.setMessage(this@RegisterActivity, getString(R.string.success_register))
+                                        Message.setMessage(this@RegisterActivity, getString(R.string.registSucces))
                                         finish()
                                     }
                                     is NetworkResult.Loading -> {
                                         showLoading(true)
                                     }
                                     is NetworkResult.Error -> {
-                                        Message.setMessage(this@RegisterActivity, resources.getString(R.string.error_register))
+                                        Message.setMessage(this@RegisterActivity, resources.getString(R.string.errorRegister))
                                         showLoading(false)
                                     }
                                 }
@@ -94,6 +94,8 @@ class RegisterActivity : AppCompatActivity() {
         val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(100)
         val nameEditTextLayout =
             ObjectAnimator.ofFloat(binding.nameEditTextLayout, View.ALPHA, 1f).setDuration(100)
+        val message =
+            ObjectAnimator.ofFloat(binding.messageTextView, View.ALPHA, 1f).setDuration(100)
         val emailEditTextLayout =
             ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(100)
         val passwordEditTextLayout =
@@ -111,6 +113,7 @@ class RegisterActivity : AppCompatActivity() {
                 title,
                 nameEditTextLayout,
                 emailEditTextLayout,
+                message,
                 passwordEditTextLayout,
                 signup,
                 together

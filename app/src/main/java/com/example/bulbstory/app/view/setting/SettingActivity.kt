@@ -24,22 +24,22 @@ class SettingActivity : AppCompatActivity() {
         setContentView(binding.root)
         prefsManager = PrefsManager(this)
 
-        binding.btnSetLanguage.setOnClickListener {
+        binding.buttonChangeLang.setOnClickListener {
             startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
 
         binding.btnLogout.setOnClickListener {
             val dialog = AlertDialog.Builder(this)
-            dialog.setTitle(resources.getString(R.string.log_out))
-            dialog.setMessage(getString(R.string.are_you_sure))
-            dialog.setPositiveButton(getString(R.string.yes)) {_,_ ->
+            dialog.setTitle(resources.getString(R.string.logOut))
+            dialog.setMessage(getString(R.string.makeSure))
+            dialog.setPositiveButton(getString(R.string.yesLogout)) {_,_ ->
                 prefsManager.clear()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
-                Message.setMessage(this, getString(R.string.log_out_warning))
+                Message.setMessage(this, getString(R.string.warningLogout))
             }
-            dialog.setNegativeButton(getString(R.string.no)) {_,_ ->
-                Message.setMessage(this, getString(R.string.not_out))
+            dialog.setNegativeButton(getString(R.string.noLogout)) {_,_ ->
+                Message.setMessage(this, getString(R.string.noSure))
             }
             dialog.show()
         }

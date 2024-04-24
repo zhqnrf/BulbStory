@@ -6,47 +6,74 @@
     android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.main.MainActivity">
+    android:background="@color/white"
+    tools:context=".view.home.HomeActivity"
+    tools:ignore="MissingDefaultResource">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent"
         >
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:menu="@menu/option_menu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/option_menu"
-                app:title="@string/app_name"
-                app:titleTextColor="@color/white"
-                android:background="@color/blue"/>
-        </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center">
 
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/icon_maps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/todo" />
+
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_story"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            tools:listitem="@layout/item_story" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:listitem="@layout/story_card" />
 
         <TextView
             android:id="@+id/tv_not_found"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/data_not_found"
+            android:text="@string/emptyStory"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -60,7 +87,7 @@
             android:id="@+id/tv_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/check_connection"
+            android:text="@string/lostConnection"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -74,7 +101,7 @@
             android:id="@+id/btn_try"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/try_again"
+            android:text="@string/tryAgain"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/tv_error"
             app:layout_constraintStart_toStartOf="@id/tv_error"
@@ -97,13 +124,16 @@
             android:id="@+id/fb_add_story"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_add_24"
+            android:src="@drawable/baseline_cloud_upload_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/blue"
+            android:tint="@color/white"
+            app:tint="@color/white"
             android:backgroundTint="@color/blue"
-            android:contentDescription="@string/upload_story" />
+            android:contentDescription="@string/uploadStory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.example.bulbstory.app.view.main
+package com.example.bulbstory.app.view.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class MainViewModel constructor(private val repository: DataRepository) : ViewModel() {
+class HomeViewModel constructor(private val repository: DataRepository) : ViewModel() {
     private val listStory = MutableLiveData<NetworkResult<ResponseStory>>()
     private var job: Job? = null
 

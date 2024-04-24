@@ -10,7 +10,7 @@ import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bulbstory.app.data.remote.respon.story.ListStory
-import com.example.bulbstory.app.databinding.ItemStoryBinding
+import com.example.bulbstory.app.databinding.StoryCardBinding
 
 class StoryAdapter(private val context: Context, private val clickListener: OnItemClickAdapter) :
     RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
@@ -25,7 +25,7 @@ class StoryAdapter(private val context: Context, private val clickListener: OnIt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = StoryViewHolder(
-        ItemStoryBinding.inflate(LayoutInflater.from(context), parent, false)
+        StoryCardBinding.inflate(LayoutInflater.from(context), parent, false)
     )
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
@@ -34,7 +34,7 @@ class StoryAdapter(private val context: Context, private val clickListener: OnIt
 
     override fun getItemCount(): Int = listStory.size
 
-    inner class StoryViewHolder(private val binding: ItemStoryBinding) :
+    inner class StoryViewHolder(private val binding: StoryCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(listStory: ListStory) {
             with(binding) {

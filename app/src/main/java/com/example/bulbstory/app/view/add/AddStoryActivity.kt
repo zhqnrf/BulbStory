@@ -21,7 +21,7 @@ import androidx.lifecycle.coroutineScope
 import com.example.bulbstory.app.R
 import com.example.bulbstory.app.data.DataRepository
 import com.example.bulbstory.app.data.remote.api.ApiClient
-import com.example.bulbstory.app.databinding.ActivityAddStoryBinding
+import com.example.bulbstory.app.databinding.ActivityStoryBinding
 import com.example.bulbstory.app.util.Message
 import com.example.bulbstory.app.util.NetworkResult
 import com.example.bulbstory.app.util.PrefsManager
@@ -29,14 +29,14 @@ import com.example.bulbstory.app.util.ViewModelFactory
 import com.example.bulbstory.app.util.createCustomTempFile
 import com.example.bulbstory.app.util.reduceFileImage
 import com.example.bulbstory.app.util.uriToFile
-import com.example.bulbstory.app.view.main.MainActivity
+import com.example.bulbstory.app.view.home.HomeActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.File
 
 class AddStoryActivity : AppCompatActivity() {
-    private val binding: ActivityAddStoryBinding by lazy {
-        ActivityAddStoryBinding.inflate(layoutInflater)
+    private val binding: ActivityStoryBinding by lazy {
+        ActivityStoryBinding.inflate(layoutInflater)
     }
     private var getFile: File? = null
     private var uploadJob: Job = Job()
@@ -53,7 +53,7 @@ class AddStoryActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (!allPermissionsGranted()) {
-                Message.setMessage(this, getString(R.string.not_allowed_permission))
+                Message.setMessage(this, getString(R.string.deniedPermission))
                 finish()
             }
         }
@@ -83,7 +83,7 @@ class AddStoryActivity : AppCompatActivity() {
             if(getFile != null || !TextUtils.isEmpty(binding.edtDescription.text.toString())) {
                 uploadStory(prefsManager.token)
             } else {
-                Message.setMessage(this, getString(R.string.warning_upload))
+                Message.setMessage(this, getString(R.string.emptyUpload))
             }
         }
     }
@@ -111,8 +111,8 @@ class AddStoryActivity : AppCompatActivity() {
                     when (result) {
                         is NetworkResult.Success -> {
                             setLoadingState(false)
-                            Message.setMessage(this@AddStoryActivity, getString(R.string.success_add_story))
-                            startActivity(Intent(this@AddStoryActivity, MainActivity::class.java))
+                            Message.setMessage(this@AddStoryActivity, getString(R.string.uploadStory))
+                            startActivity(Intent(this@AddStoryActivity, HomeActivity::class.java))
                             finish()
                         }
                         is NetworkResult.Loading -> {
@@ -120,7 +120,7 @@ class AddStoryActivity : AppCompatActivity() {
                         }
                         is NetworkResult.Error -> {
                             setLoadingState(false)
-                            Message.setMessage(this@AddStoryActivity, getString(R.string.error_add_story))
+                            Message.setMessage(this@AddStoryActivity, getString(R.string.emptyStory))
                         }
                     }
                 }
